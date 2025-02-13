@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💖</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: red;
+        }
+        .question {
+            font-size: 1.5em;
+            margin: 20px;
+        }
+        .buttons {
+            position: relative;
+            margin-top: 20px;
+        }
+        .yes-button, .no-button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+        }
+        .yes-button {
+            background-color: red;
+            color: white;
+        }
+        .no-button {
+            background-color: white;
+            color: black;
+            position: absolute;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine? 💘</h1>
+        <p class="question">You make my heart race faster than my WiFi speed! 😍</p>
+        <div class="buttons">
+            <button class="yes-button" onclick="nextQuestion('YES')">YES 😍</button>
+            <button class="no-button" onmouseover="moveNoButton()">NO 😜</button>
+        </div>
+    </div>
+    <script>
+        let counter = 0;
+        let questions = [
+            "Are you really sure? My heart will break 💔!",
+            "What if I give you unlimited chocolate? 🍫",
+            "Think again! I'll be the best Valentine ever! 🥺",
+            "Oops, NO button disabled now! Guess you have to say YES 😆"
+        ];
+        
+        function moveNoButton() {
+            let noButton = document.querySelector('.no-button');
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            noButton.style.left = x + 'px';
+            noButton.style.top = y + 'px';
+        }
+        
+        function nextQuestion(answer) {
+            if (answer === 'YES') {
+                document.body.innerHTML = '<h1>Yay! You're My Valentine! ❤️🥰</h1><p>Can't wait for our special day! 🎉</p>';
+            } else {
+                if (counter < questions.length) {
+                    document.querySelector('.question').innerText = questions[counter];
+                    counter++;
+                } else {
+                    document.querySelector('.no-button').classList.add('hidden');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
